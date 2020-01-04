@@ -1,0 +1,37 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the minimumBribes function below.
+def minimumBribes(q):
+    minBribe = 0
+    fl = 0
+    for i in range(len(q)):
+        if(q[i] > i+1):
+            if(i+1 < len(q)):
+                if (q[i] - (i+1)) > 2:
+                    print('Too chaotic')
+                    fl = 1
+                    break
+        for j in range(max(0, (q[i]-2)), i, 1):
+            if(q[j] > q[i]):
+                minBribe = minBribe + 1
+    if fl == 0:
+        print(str(minBribe))
+        
+
+
+if __name__ == '__main__':
+    t = int(input())
+
+    for t_itr in range(t):
+        n = int(input())
+
+        q = list(map(int, input().rstrip().split()))
+
+        minimumBribes(q)
+
